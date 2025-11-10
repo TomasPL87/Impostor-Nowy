@@ -1,38 +1,47 @@
-
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-  <meta charset="utf-8" />
-  <title>Impostor - Demo</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <title>Kto jest Impostorem?</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 40px; background: #fafafa; color: #222; }
+    input, select, button { margin: 8px; padding: 8px 14px; font-size: 16px; }
+    button { cursor: pointer; border-radius: 6px; border: none; background: #007bff; color: white; }
+    button:hover { background: #0056b3; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 4px; }
+  </style>
 </head>
 <body>
+  <h1>Kto jest Impostorem?</h1>
+
   <div id="menu">
-    <h1>Impostor - Gra</h1>
-    <label>Nick: <input id="nameInput" /></label><br/>
-    <label>Kod pokoju (aby dołączyć): <input id="joinCode" /></label><br/>
+    <label>Nick: <input id="nameInput" /></label><br>
+    <label>Kod pokoju (aby dołączyć): <input id="joinCode" /></label><br>
+    <label>Kategoria:
+      <select id="categorySelect">
+        <option>Ogólna</option>
+        <option>16+</option>
+        <option>Piłka nożna</option>
+        <option>Bajki Disneya</option>
+      </select>
+    </label><br>
     <button id="createBtn">Utwórz pokój</button>
     <button id="joinBtn">Dołącz do pokoju</button>
-    <div id="categoriesDiv"></div>
-    <div id="error" style="color:red"></div>
   </div>
 
-  <div id="lobby" style="display:none">
+  <div id="game" style="display:none;">
     <h2>Pokój: <span id="roomCode"></span></h2>
-    <div>Gracze: <ul id="players"></ul></div>
-    <div>Kategoria: <span id="currentCategory"></span></div>
+    <h3>Kategoria: <span id="currentCategory"></span></h3>
+    <h3>Gracze:</h3>
+    <ul id="players"></ul>
     <button id="startBtn">Rozpocznij rundę</button>
-    <button id="leaveBtn">Opuść pokój</button>
-  </div>
 
-  <div id="game" style="display:none">
     <h2 id="roleTitle"></h2>
-    <div id="wordArea"></div>
-    <button id="readyBtn">Gotowy na następną rundę</button>
+    <div id="wordArea" style="font-size:24px;margin:15px;"></div>
   </div>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="script.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
