@@ -118,10 +118,10 @@ socket.on("roundData", ({role, word})=>{
   lobbyDiv.style.display = "none";
   gameDiv.style.display = "block";
   if (role === "impostor") {
-    roleTitle.textContent = "You are the IMPOSTOR";
-    wordArea.textContent = "(you are impostor — you don't see the word)";
+    roleTitle.textContent = "Jesteś IMPOSTOREM";
+    wordArea.textContent = "(jako impostor nie widzisz hasła)";
   } else {
-    roleTitle.textContent = "You are a PLAYER";
+    roleTitle.textContent = "Jesteś GRACZEM";
     wordArea.textContent = word;
   }
 });
