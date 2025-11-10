@@ -1,12 +1,13 @@
-// server.js
 const express = require("express");
-const http = require("http").createServer();
+const http = require("http");
 const { Server } = require("socket.io");
-const io = new Server(http);
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 
 const app = express();
+const server = http.createServer(app); // ✅ TU: przekazujemy app do serwera
+const io = new Server(server);         // ✅ Socket.io działa na tym samym serwerze
+
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static("public"));
@@ -55,10 +56,9 @@ io.on("connection", (socket) => {
     const room = rooms[code];
     if (!room) return;
 
-    // ✅ tylko host może rozpocząć grę
     if (socket.id !== room.hostId) return;
 
-    const category = room.category || "Ogólna";
+    const category = room.category || "ogólna";
     const availableWords = words[category];
     if (!availableWords) return;
 
@@ -89,4 +89,7 @@ function updateRoom(code) {
   });
 }
 
-http.listen(PORT, () => console.log("Serwer działa na porcie " + PORT));
+// ✅ Używamy process.env.PORT i nasłuchujemy na 0.0.0.0
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Serwer działa na porcie ${PORT}`);
+});
