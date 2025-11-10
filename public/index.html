@@ -9,27 +9,27 @@
 </head>
 <body>
   <div id="menu">
-    <h1>Impostor - Demo</h1>
+    <h1>Impostor - Gra</h1>
     <label>Nick: <input id="nameInput" /></label><br/>
-    <label>Room code (to join): <input id="joinCode" /></label><br/>
-    <button id="createBtn">Create room</button>
-    <button id="joinBtn">Join room</button>
+    <label>Kod pokoju (aby dołączyć): <input id="joinCode" /></label><br/>
+    <button id="createBtn">Utwórz pokój</button>
+    <button id="joinBtn">Dołącz do pokoju</button>
     <div id="categoriesDiv"></div>
     <div id="error" style="color:red"></div>
   </div>
 
   <div id="lobby" style="display:none">
-    <h2>Room: <span id="roomCode"></span></h2>
-    <div>Players: <ul id="players"></ul></div>
-    <div>Category: <span id="currentCategory"></span></div>
-    <button id="startBtn">Start Round</button>
-    <button id="leaveBtn">Leave Room</button>
+    <h2>Pokój: <span id="roomCode"></span></h2>
+    <div>Gracze: <ul id="players"></ul></div>
+    <div>Kategoria: <span id="currentCategory"></span></div>
+    <button id="startBtn">Rozpocznij rundę</button>
+    <button id="leaveBtn">Opuść pokój</button>
   </div>
 
   <div id="game" style="display:none">
     <h2 id="roleTitle"></h2>
     <div id="wordArea"></div>
-    <button id="readyBtn">Ready for next round</button>
+    <button id="readyBtn">Gotowy na następną rundę</button>
   </div>
 
 <script src="/socket.io/socket.io.js"></script>
